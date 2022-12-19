@@ -1,0 +1,59 @@
+@use 'styles';
+
+.main__source {
+  background-color: #b4d3e5;
+  border: 2px solid black;
+  border-radius: 1em 1em;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: a;
+  @include styles.main-font;
+
+  label {
+    margin: 0em 1em;
+  }
+
+  .main__source__income {
+    margin: 0.5em 0em;
+    select {
+      @include styles.option-style;
+    }
+  }
+
+  .main__source__amount {
+    margin: 0.5em 0em;
+
+    #amount-income {
+      @include styles.option-style;
+    }
+  }
+
+  .main__source__Date {
+    margin: 0.5em 0em;
+    #date-income {
+      @include styles.option-style;
+    }
+  }
+
+  .main_source_btn {
+    margin-top: 2em;
+
+    & button:nth-child(1) {
+      @include styles.button-style;
+
+      &:hover {
+        @include styles.button-style-hover();
+      }
+    }
+
+    & button:nth-child(2) {
+      @include styles.button-style;
+      &:hover {
+        @include styles.button-style-hover();
+      }
+    }
+  }
+}

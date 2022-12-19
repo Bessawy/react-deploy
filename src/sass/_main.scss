@@ -1,0 +1,74 @@
+@use "styles";
+
+.main {
+  height: 100vh;
+  background-color: #f8f9f9;
+
+  .main__grid {
+    margin: 4em 4em;
+    display: grid;
+    grid-template-areas:
+      "a b c"
+      "d e c";
+    gap: 2em 2em;
+  }
+
+  ul {
+    overflow: scroll;
+    height: 30vh;
+    background-color: #dbe8f0;
+    border: 2px solid rgb(29, 8, 110);
+  }
+
+  ul:nth-of-type(1) {
+    grid-area: d;
+    @include styles.ul-styles;
+
+    li {
+      @include styles.main-font;
+      @include styles.li-styles;
+    }
+  }
+
+  ul:nth-of-type(2) {
+    grid-area: e;
+    @include styles.ul-styles;
+    li {
+        @include styles.main-font;
+        @include styles.li-styles;
+      }
+  }
+}
+
+
+.main__section{
+    margin: 2em 6em;
+    background-color: #b9cedb;
+    border: 2px solid rgb(29, 8, 110);
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    @include styles.main-font;
+
+    form{
+        margin: 1em 0em;
+
+        label{
+            margin: 0em 1em;
+        }
+
+        & input:nth-of-type(1){
+            @include styles.option-style;
+        }
+
+        & input:nth-of-type(2){
+            @include styles.button-style;
+            margin: 0em 1em;
+
+            &:hover{
+                @include styles.button-style-hover;
+            }
+        }
+
+    }
+}

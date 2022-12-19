@@ -1,0 +1,49 @@
+@mixin main-font {
+  font-size: large;
+  color: white;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+@mixin option-style {
+  border: 2px solid rgb(4, 4, 4);
+  border-radius: 1em 1em;
+  text-align: center;
+  cursor: pointer;
+  margin: 0;
+  font-family: inherit;
+  padding: 0 0.5em;
+  background-image: linear-gradient(to top, #cecaca, #fff 33%);
+}
+
+@mixin button-style {
+  margin: 0 2em;
+  border: 2px solid black;
+  border-radius: 2em;
+  background-color: rgb(118, 133, 172);
+  padding: 0 1em;
+  color: white;
+}
+
+@mixin button-style-hover {
+  background-color: rgb(52, 79, 149);
+}
+
+
+@mixin ul-styles{
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 28vw;
+}
+
+@mixin li-styles{
+  list-style-type: none;
+  background-color: rgb(30, 30, 109);
+  width: fit-content;
+  padding: 0 1em;
+  margin: 0.5em 0em;
+  border: 2px solid rgb(55, 134, 183);
+  border-radius: 1em;
+}

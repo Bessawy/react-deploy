@@ -1,0 +1,59 @@
+@use 'styles';
+
+.main__expense {
+  background-color: #b4d3e5;
+  border: 2px solid black;
+  border-radius: 1em 1em;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: b;
+  @include styles.main-font;
+
+  label {
+    margin: 0em 1em;
+  }
+
+  .main__expense__income {
+    margin: 0.5em 0em;
+    select {
+      @include styles.option-style;
+    }
+  }
+
+  .main__expense__amount {
+    margin: 0.5em 0em;
+
+    #amount-expense {
+      @include styles.option-style;
+    }
+  }
+
+  .main__expense__Date {
+    margin: 0.5em 0em;
+    #date-expense {
+      @include styles.option-style;
+    }
+  }
+
+  .main_expense_btn {
+    margin-top: 2em;
+
+    & button:nth-child(1) {
+      @include styles.button-style;
+
+      &:hover {
+        @include styles.button-style-hover();
+      }
+    }
+
+    & button:nth-child(2) {
+      @include styles.button-style;
+      &:hover {
+        @include styles.button-style-hover();
+      }
+    }
+  }
+}
