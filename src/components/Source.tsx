@@ -5,15 +5,29 @@ import "../sass/_source.scss";
 import {
   EventOnChange,
   IncomeObj,
+  ListIncomeType,
   onChnageType,
   SourceHandlerType,
 } from "../types/Source";
 
-export function listIncomeSources(sourceObjs: IncomeObj[]) {
-  return sourceObjs.map((obj, index) => {
+
+// key is index which should be fine since when only remove or added elements
+// at the end of the list (could use uuid instead)
+export function listIncomeSources(data :ListIncomeType) {
+  function Delete(id: string, index:number){
+      const new_array = data.sourceObjs.filter(obj=> obj.id !== id)
+      data.setBalance(data.balance - data.sourceObjs[index].amount)
+      data.SetsourceObjs(new_array)
+  }
+
+  return data.sourceObjs.map((obj, index) => {
     return (
-      <li key={index}>
+      <li key={obj.id}>
         {obj.source}: {obj.amount}EUR on {obj.date}
+        <span>
+          <button onClick={(e)=> Delete(obj.id, index)} disabled={data.balance - obj.amount < 0}> D </button>
+          <button onClick={(e)=> data.Edit_Income(obj.id)}> E </button>
+        </span>
       </li>
     );
   });
@@ -25,6 +39,7 @@ export function checkSource(sourceObj: IncomeObj): boolean {
   let years = date_check[0];
 
   if (source === "" || amount < 0 || years < "1930" || years > "2023") {
+    alert("wrong Income entry")
     return false;
   }
   return true;

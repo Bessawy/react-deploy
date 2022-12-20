@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ProgressType, TargetHandler } from "../types/Savings";
+import { ProgressType, SavingType, TargetHandler, TransferType } from "../types/Savings";
 import { EventOnChange } from "../types/Source";
 import { setStringtoInt } from "../utils/utils";
 
@@ -23,6 +23,37 @@ function TargetAmount(props: TargetHandler) {
   );
 }
 
+function TransferSaving(props: TransferType) {
+
+  const [transfer, setTransfer] = useState<number>(0);
+
+  function onTransferChange(event: EventOnChange) {
+    setStringtoInt(transfer, setTransfer, event.target.value);
+  }
+
+  function onclick(event: any){
+    props.transferSavings(transfer)
+  }
+
+  return (
+    <div className="main__saving__transfer">
+      <form action="#">
+        <label htmlFor="saving_transfer">Transfer saving</label>
+        <input
+          type="number"
+          onChange={onTransferChange}
+          id="target-amount"
+          name="amount"
+          min={0}
+        />
+        <input type="reset" value="transfer" onClick={onclick} />
+      </form>
+    </div>
+  );
+}
+
+
+
 function Progress(props: ProgressType) {
   function getProgress(): string {
     if (props.Target_ === 0) {
@@ -41,7 +72,8 @@ function Progress(props: ProgressType) {
 }
 
 
-function Savings(props: {saving: number}) {
+
+function Savings(props: SavingType) {
   const [target, setTarget] = useState<number>(0);
 
   function onTargetChange(event: EventOnChange) {
@@ -58,9 +90,10 @@ function Savings(props: {saving: number}) {
         onChangeTargetHandler={(e) => onTargetChange(e)}
         onClickTargetReset={(e) => resetTarget(e)}
       />
-      <p> Current saving: {props.saving}</p>
+      <p> Current saving: {props.savings}</p>
       <p> Target: {target}</p>
-      <Progress Target_={target} Saving_={props.saving} />
+      <TransferSaving transferSavings={props.transferSavings}/>
+      <Progress Target_={target} Saving_={props.savings} />
     </div>
   );
 }

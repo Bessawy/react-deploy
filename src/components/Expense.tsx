@@ -2,17 +2,30 @@ import React, { useState } from "react";
 import {
   EventOnChange,
   ExpenseObj,
+  ListExpenseType,
   onChnageType,
   SourceHandlerType,
 } from "../types/Expense";
 
 import "../sass/_expense.scss";
+import Chart from "./Graphs";
 
-export function listExpenseSources(sourceObjs: ExpenseObj[]) {
-  return sourceObjs.map((obj, index) => {
+export function listExpenseSources(data :ListExpenseType) {
+
+    function Delete(id: string, index:number){
+      const new_array = data.expenseObjs.filter(obj=> obj.id !== id)
+      data.setBalance(data.balance + data.expenseObjs[index].amount)
+      data.SetexpenseObjs(new_array)
+  }
+
+  return data.expenseObjs.map((obj, index) => {
     return (
-      <li key={index}>
+      <li key={obj.id}>
         {obj.source}: {obj.amount}EUR on {obj.date}
+        <span>
+          <button onClick={(e)=> Delete(obj.id, index)}> D </button>
+          <button onClick={(e)=> data.Edit_Expenses(obj.id)}> E </button>
+        </span>
       </li>
     );
   });
@@ -23,6 +36,8 @@ export function checkExpense(expObj: ExpenseObj): boolean {
   const date_check = date.split("-");
   let years = date_check[0];
   if (source === "" || amount < 0 || years < "1930" || years > "2023") {
+    alert("wrong Expense entry")
+    console.log("here")
     return false;
   }
   return true;

@@ -11,6 +11,11 @@ export interface ProgressType{
     Target_: number
 }
 
-export interface SavingType{
+export interface TransferType{
+    transferSavings(amount: number):void;
+}
+
+export interface SavingType extends TransferType{
     savings: number;
 }
+

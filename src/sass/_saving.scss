@@ -59,3 +59,25 @@
     
   }
 }
+
+
+.main__saving__transfer{
+  margin: 1em 0em;
+  @include styles.main-font;
+
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  & input:nth-of-type(1){
+    @include styles.option-style;
+  }
+
+  & input:nth-of-type(2){
+    @include styles.button-style;
+  }
+
+
+}

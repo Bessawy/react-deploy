@@ -1,6 +1,6 @@
 # Getting Started with React Components & React Hooks
 
-This assignment requires also TypeScript when passing props to React Components
+- Application for balance management.
 
 ## Requirements
 
@@ -12,21 +12,46 @@ saving target.
 4. Use React Hooks where applicable. TypeScript must be used at least for the props types.
 5. Decide your own styling (The image has no style)
 
-## Bonus point
+## Technology
 
-1. Add function to transfer money back from saving account to current balance.
-2. Set source of incomes and expenses as the select elements with the categories of your choice.
-3. Add edit/delete button and according functions for incomes and expenses.
-4. Use `d3` package to print out 2 piecharts for incomes and expenses in categories.
+1. Typescript
+2. React
+3. Sass
+4. d3- for piecharts
 
 ## References
 
-Be creative with your style!
 
-![demo1](https://github.com/Integrify-Finland/bof-budget-control-app/blob/main/Screenshot%202022-10-10%20at%2017.26.52.png)
----
 
-![demo2](https://github.com/Integrify-Finland/bof-budget-control-app/blob/main/Screenshot%202022-10-10%20at%2017.28.16.png)
----
+## File structure
 
-![demo3](https://github.com/Integrify-Finland/bof-budget-control-app/blob/main/Screenshot%202022-10-10%20at%2017.44.06.png)
+```
+└───src
+    │   App.css
+    │   App.tsx
+    │   index.css
+    │   index.tsx
+    │
+    ├───components
+    │       Expense.tsx
+    │       Graphs.tsx
+    │       Main.tsx
+    │       Savings.tsx
+    │       Source.tsx
+    │
+    ├───sass
+    │       _charts.scss
+    │       _expense.scss
+    │       _main.scss
+    │       _saving.scss
+    │       _source.scss
+    │       _styles.scss
+    │
+    ├───types
+    │       Expense.ts
+    │       Savings.ts
+    │       Source.ts
+    │
+    └───utils
+            utils.ts
+```
